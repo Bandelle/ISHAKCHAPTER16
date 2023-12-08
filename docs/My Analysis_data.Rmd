@@ -1,0 +1,25 @@
+---
+title: "ANALYSIS"
+author: "Abdul Razak Ishak_Bandelle"
+date: "2023-12-05"
+output: pdf_document
+---
+
+This Rmarkdown file will do the analysis.
+
+```{r}
+library(BandelleFlagWeather)   # load BandelleFlagWeather, which includes Flagstaff_Weather data frame.
+library(ggplot2)
+
+P_1 <- Flagstaff_Weather %>% 
+  mutate(Year=year(DATE)) %>% 
+  group_by(Year) %>% summarise(Total_PRCP=sum(PRCP))
+
+ggplot(P_1, aes(x=Year , y=Total_PRCP))+ 
+  geom_point()
+
+```
+
+We see that the daily max temperature in Flagstaff varies quite a lot.
+
+
